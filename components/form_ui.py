@@ -1,6 +1,6 @@
 import streamlit as st
 import os
-from utils.validators import validate_email, validate_phone
+from utils.validators import validate_email, validate_phone,is_duplicate_employee_id
 from utils.vector_store import create_vector_store,create_vector_store_res
 from utils.embeddings import get_embeddings
 from config import BASE_DB_DIR
@@ -21,15 +21,23 @@ def user_form():
         submit = st.form_submit_button("Submit")
 
         if submit:
+            
+
             st.session_state.submitted = True
             st.session_state.user_data["Name"] = name if name.lower()!="" else "Not Provided"
             st.session_state.user_data["Email"] = email if email.lower()!="" and validate_email(email) else "Not Provided"
             st.session_state.user_data["Phone"] = phone if phone.lower()!="" and validate_phone(phone) else "Not Provided"
             st.session_state.user_data["Department"] = department if department.lower()!="" else "Not Provided"
             st.session_state.user_data["Employee ID"] = emp_id if emp_id.lower()!="" else "Not Provided"
+            
+            st.session_state.user_data["Office Location"] = location if location.lower()!="" else "Not Provided"
             user_data = st.session_state.user_data
             emp_id = user_data["Employee ID"]
-            st.session_state.user_data["Office Location"] = location if location.lower()!="" else "Not Provided"
+            
+            if is_duplicate_employee_id(emp_id):
+                st.warning(f"Employee ID '{emp_id}' already exists. Please use a unique ID.")
+                return
+
             if resume:
                 st.session_state.user_data["Resume Uploaded"] = True
                 st.session_state.user_data["Resume File Name"] = resume.name
