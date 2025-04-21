@@ -1,2 +1,0 @@
-def nigga():
-    print('niggafication')
