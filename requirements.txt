@@ -1,0 +1,33 @@
+# Web framework
+streamlit
+
+# Environment variables
+python-dotenv
+
+# Core LLM & agent framework
+langchain
+
+# Chroma vector store
+chromadb
+langchain-chroma
+
+# HuggingFace embeddings
+langchain-huggingface
+sentence-transformers
+torch
+
+# LangChain community integrations (e.g. PyMuPDFLoader)
+langchain-community
+
+# Groq-hosted LLM
+langchain-groq
+
+# Google’s Gemini API client
+google-generativeai
+
+# Data handling
+pandas
+PyMuPDF
+
+# Data models
+pydantic
