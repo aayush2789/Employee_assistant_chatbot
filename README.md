@@ -38,4 +38,5 @@ This is an AI-powered chatbot built using **Streamlit**, **LangChain**, and **Gr
 
 - Resumes are uploaded and saved to the `temp_resumes/` folder.
 - Documents to be organized should be placed in the `sample_docs/` folder.
+- Organized files are palced in sample_docs/organized_files/{desired category}
 - User information is stored locally for now; future updates may include database integration.
